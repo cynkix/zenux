@@ -270,6 +270,10 @@ body.v4::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-in
 .v4page .copy{font-size:16px;line-height:1.65;color:var(--ink2);max-width:62ch}
 .sec4{padding-block:clamp(64px,9vw,120px);border-top:1px solid var(--line)}
 .sec4-head{display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(32px,5vw,56px);max-width:760px}
+#s4-mv .sec4-head{margin-bottom:clamp(20px,3vw,32px);max-width:none}
+#s4-mv .sec4-head h2{font-size:clamp(32px,4.4vw,56px);line-height:1.08}
+#s4-mv .sec4-head .lede{white-space:nowrap;max-width:none}
+@media (max-width:900px){#s4-mv .sec4-head .lede{white-space:normal;max-width:58ch}}
 /* Sous-navigation */
 .v4nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-block:1px solid var(--line)}
 .v4nav .w4{display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;padding-block:8px}
@@ -320,7 +324,7 @@ body.v4::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-in
 .mv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px)}
 @media (max-width:900px){.mv{grid-template-columns:minmax(0,1fr)}}
 .mv-l{position:relative}
-.mv-stick{position:sticky;top:calc(52px + env(safe-area-inset-top,0px));height:calc(100vh - 52px - env(safe-area-inset-top,0px));box-sizing:border-box;padding-top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.mv-stick{position:sticky;top:calc(52px + env(safe-area-inset-top,0px));height:calc(100vh - 52px - env(safe-area-inset-top,0px));box-sizing:border-box;padding-top:clamp(16px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px}
 .mv-head{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
 .mv-head .eb{font-size:11px}
 .mv-head strong{font-size:15px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -533,7 +537,6 @@ body.t-dark .thm .sun{display:block} body.t-dark .thm .moon{display:none}
       <button class="ver-btn" id="verBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="verMenu"><b id="verTag">V1</b><span id="verName">Step by step</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 4 4 4-4"/></svg></button>
       <div class="ver-menu" id="verMenu" role="menu" hidden>
         <div class="lbl">Version</div>
-        <a role="menuitem" href="https://claude.ai/artifact/7PykDo7H8GTzASpKzBCLk7" target="_blank" rel="noopener"><span class="tag">☰</span><strong>Toutes les versions ↗</strong><small>Page d’accès aux six prototypes</small></a>
         <button type="button" role="menuitemradio" data-v="3" aria-checked="true"><span class="tag">V1</span><strong>Step by step</strong><small>Cadran · → déroule chaque élément</small><svg class="ck" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
         <button type="button" role="menuitemradio" data-v="2" aria-checked="false"><span class="tag">V2</span><strong>Overview</strong><small>Sans la montre · à peaufiner</small><svg class="ck" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
         <button type="button" role="menuitemradio" data-v="4" aria-checked="false"><span class="tag">V3</span><strong>Landing</strong><small>Page inspirée des sites horlogers</small><svg class="ck" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
@@ -1732,7 +1735,7 @@ function buildV4(){
   </div><ol class="qlist rv">${QS.map((q,k)=>`<li><button type="button" data-go4="${TO[q.id][1]}"><span class="n">Q${k+1}</span><span class="t">${esc(q.name)}</span><span class="q">${esc(q.q)}</span><span class="to">${TO[q.id][0]} →</span></button></li>`).join("")}</ol></div></section>`;
   // Mouvement
   h+=`<section id="s4-mv" class="sec4"><div class="w4">
-    <div class="sec4-head rv"><span class="eb"><b>02</b> · ${t("The movement","Le mouvement")}</span><h2>${t("Six phases, six gates, one loop","Six phases, six portes, une boucle")}</h2><p class="lede">${t("Scroll: the dial follows the idea phase by phase, and each transition ends with a gate.","Faites défiler : le cadran suit l'idée de phase en phase, et chaque passage se termine par une porte.")}</p></div>
+    <div class="sec4-head rv"><span class="eb"><b>02</b> · ${t("The movement","Le mouvement")}</span><h2>${t("Six phases,<br>six gates,<br>one loop","Six phases,<br>six portes,<br>une boucle")}</h2><p class="lede">${t("Scroll: the dial follows the idea phase by phase, and each transition ends with a gate.","Faites défiler : le cadran suit l'idée de phase en phase, et chaque passage se termine par une porte.")}</p></div>
     <div class="mv"><div class="mv-l"><div class="mv-stick"><div class="mv-head"><span class="eb"><b>02</b> · ${t("The movement","Le mouvement")}</span><strong>${t("Six phases, six gates, one loop","Six phases, six portes, une boucle")}</strong></div><div class="shot" id="v4dial"></div><div class="mv-cap" id="v4cap"></div><div class="mv-prog" id="v4prog">${PH.map(p=>`<span style="--c:${p.c}"></span>`).join("")}</div></div></div>
     <div class="chs">
       <article class="ch" data-ph=""><span class="idx">00 / 06</span><h3>${t("The","Le")} <em style="--c:var(--red)">${t("loop","cycle")}</em></h3><p class="copy">${t("Five phases form the loop: <strong>Discover, Design, Develop, Deploy, Deepen</strong>. The sixth, <strong>Drop</strong>, stands outside the loop and retires what no longer earns its place.","Cinq phases forment la boucle : <strong>Discover, Design, Develop, Deploy, Deepen</strong>. La sixième, <strong>Drop</strong>, se tient hors de la boucle et retire ce qui ne mérite plus sa place.")}</p><p class="copy">${t("<strong>Between phases, machines verify, a named person decides</strong>, the platform records. A gate opens on evidence, never on assertion.","Chaque phase se termine par un livrable écrit sur lequel la suivante s'appuie. <strong>Entre deux phases, les machines vérifient, une personne nommée décide</strong>, la plateforme enregistre. Une porte s'ouvre sur preuves, jamais sur une affirmation.")}</p></article>
